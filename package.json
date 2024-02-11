@@ -6,9 +6,12 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "build": "babel src -d lib",
+    "test": "jest"
   },
   "dependencies": {
+    "@kinde-oss/react-native-sdk-0-7x": "^1.2.2",
     "expo": "~50.0.6",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
