@@ -1,22 +1,24 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useContext } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { AuthContext } from "../../App";
 import { client } from "../Utils/KindConfig";
+import Header from "../components/Header";
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
   const { auth, setAuth } = useContext(AuthContext);
   const handleLogout = async () => {
-    // With open web in your apps
-    const isLoggedOut = await client.logout();
+    const loggedOut = await client.logout();
 
-    if (isLoggedOut) {
+    if (loggedOut) {
       setAuth(false);
+      navigation.navigate("Profile");
     }
   };
   return (
     <View>
-      <Text>HomeScreen</Text>
-      <Button title="Log out" onPress={handleLogout} />
+      <Header />
     </View>
   );
 };
