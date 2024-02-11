@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Image,
   SafeAreaView,
@@ -7,13 +7,16 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { AuthContext } from "../../App";
 import Colors from "../Utils/Colors";
 import { client } from "../Utils/KindConfig";
 const LoginScreen = () => {
+  const { auth, setAuth } = useContext(AuthContext);
   const handleSignUp = async () => {
     const token = await client.register();
     if (token) {
       // User was authenticated
+      setAuth(true);
       console.log("authenticated successfully");
     }
   };
@@ -22,6 +25,7 @@ const LoginScreen = () => {
     const token = await client.login();
     if (token) {
       // User was authenticated
+      setAuth(true);
       console.log("authenticated successfully");
     }
   };
