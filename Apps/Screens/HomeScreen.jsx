@@ -4,6 +4,7 @@ import { StyleSheet, View } from "react-native";
 import { AuthContext } from "../../App";
 import GlobalApi from "../Utils/GlobalApi";
 import { client } from "../Utils/KindConfig";
+import CategoryList from "../components/CategoryList";
 import Header from "../components/Header";
 
 const HomeScreen = () => {
@@ -26,12 +27,13 @@ const HomeScreen = () => {
 
   const getCategories = () => {
     GlobalApi.getCategories().then((response) => {
-      console.log(response.categories);
+      setCategories(response.categories);
     });
   };
   return (
     <View>
       <Header />
+      <CategoryList category={category} />
     </View>
   );
 };
