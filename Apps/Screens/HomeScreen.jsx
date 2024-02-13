@@ -33,7 +33,7 @@ const HomeScreen = () => {
   return (
     <View>
       <Header />
-      <CategoryList category={category} />
+      <CategoryList categories={categories} />
     </View>
   );
 };

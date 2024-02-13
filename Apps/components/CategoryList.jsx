@@ -1,14 +1,34 @@
-import React from "react";
-import { FlatList, Image, StyleSheet, View } from "react-native";
+import React, { useState } from "react";
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import Colors from "../Utils/Colors";
 
 const CategoryList = ({ categories }) => {
+  const [activeIndex, setActiveIndex] = useState();
   return (
-    <View>
+    <View style={{ margin: 20 }}>
+      <Text></Text>
       <FlatList
         data={categories}
-        horizontal:true
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) => (
-          <View key={index} style={{}}>
+          <TouchableOpacity
+            onPress={() => setActiveIndex(index)}
+            style={[
+              styles.container,
+              activeIndex === index && {
+                borderWidth: 1,
+                borderColor: Colors.PRIMARY,
+              },
+            ]}
+          >
             <Image
               source={{ uri: item?.icon?.url }}
               style={{
@@ -18,7 +38,10 @@ const CategoryList = ({ categories }) => {
                 objectFit: "contained",
               }}
             />
-          </View>
+            <Text style={{ texAlign: "center", marginTop: 4 }}>
+              {item?.name}
+            </Text>
+          </TouchableOpacity>
         )}
       />
     </View>
@@ -27,4 +50,14 @@ const CategoryList = ({ categories }) => {
 
 export default CategoryList;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.WHITE,
+    padding: 15,
+    marginRight: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 15,
+    width: 90,
+  },
+});
