@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import { AuthContext } from "../../App";
 import GlobalApi from "../Utils/GlobalApi";
 import { client } from "../Utils/KindConfig";
@@ -39,14 +39,23 @@ const HomeScreen = () => {
       setCourseList(response?.courseLists);
     });
   };
+
+  const getFilterCouserList = (tag) => {
+    const result = courseList.filter((item) => item.tag.includes(tag));
+    return result;
+  };
   return (
-    <View>
+    <ScrollView>
       <Header />
       <CategoryList categories={categories} />
       {/* courselist */}
       <SectionHeading heading="Latest Courses" />
       <CourseList courseList={courseList} />
-    </View>
+
+      {/* React course */}
+      <SectionHeading heading="React Courses" />
+      <CourseList courseList={getFilterCouserList("react")} />
+    </ScrollView>
   );
 };
 
