@@ -8,7 +8,11 @@ const CourseItem = ({ course }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("course-detail")}
+      onPress={() =>
+        navigation.navigate("course-detail", {
+          course: course,
+        })
+      }
       style={{
         backgroundColor: Colors.WHITE,
         width: 260,

@@ -2,10 +2,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 import { StyleSheet } from "react-native";
+import HomeScreen from "../Screens/HomeScreen";
 import MyCourseScreen from "../Screens/MyCourseScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
 import Colors from "../Utils/Colors";
-import HomeNavigation from "./HomeNavigation";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +19,7 @@ const TabNavigation = () => {
     >
       <Tab.Screen
         name="Home"
-        component={HomeNavigation}
+        component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="home" size={24} color={color} />

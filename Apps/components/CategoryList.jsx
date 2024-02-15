@@ -39,9 +39,7 @@ const CategoryList = ({ categories }) => {
                 objectFit: "contain",
               }}
             />
-            <Text style={{ texAlign: "center", marginTop: 4 }}>
-              {item?.name}
-            </Text>
+            <Text style={{ textAlign: "center" }}>{item?.name}</Text>
           </TouchableOpacity>
         )}
       />

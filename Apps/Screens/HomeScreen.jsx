@@ -41,8 +41,8 @@ const HomeScreen = () => {
   };
 
   const getFilterCouserList = (tag) => {
-    const result = courseList.filter((item) => item.tag.includes(tag));
-    return result;
+    // const result = courseList.filter((item) => item.tag.includes(tag));
+    // return result;
   };
   return (
     <ScrollView>

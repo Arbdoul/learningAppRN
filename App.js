@@ -2,7 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { createContext, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import TabNavigation from "./Apps/Navigation/TabNavigation";
+import HomeNavigation from "./Apps/Navigation/HomeNavigation";
 import LoginScreen from "./Apps/Screens/LoginScreen";
 import { client } from "./Apps/Utils/KindConfig";
 
@@ -36,7 +36,7 @@ export default function App() {
     <View style={styles.container}>
       <AuthContext.Provider value={{ auth, setAuth }}>
         <NavigationContainer>
-          {auth ? <TabNavigation /> : <LoginScreen />}
+          {auth ? <HomeNavigation /> : <LoginScreen />}
         </NavigationContainer>
       </AuthContext.Provider>
     </View>
