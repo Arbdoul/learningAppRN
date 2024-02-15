@@ -16,6 +16,39 @@ const getCategories = async () => {
       }
     }
   `;
+  const result = await request(MASTER_URL, query);
+  return result;
+};
+
+const getCourseList = async () => {
+  const query = gql`
+    query MyQuery {
+      courseLists(first: 50, orderBy: createdAt_DESC) {
+        author
+        demoUrl
+        description
+        free
+        slug
+        youtubeUrl
+        id
+        name
+        sourceCode
+        tags
+        banner {
+          url
+        }
+        chapter {
+          ... on Chapter {
+            id
+            name
+            video {
+              url
+            }
+          }
+        }
+      }
+    }
+  `;
 
   const result = await request(MASTER_URL, query);
   return result;
@@ -23,4 +56,5 @@ const getCategories = async () => {
 
 export default {
   getCategories,
+  getCourseList,
 };

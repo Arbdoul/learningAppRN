@@ -8,12 +8,13 @@ import {
   View,
 } from "react-native";
 import Colors from "../Utils/Colors";
+import SectionHeading from "./SectionHeading";
 
 const CategoryList = ({ categories }) => {
   const [activeIndex, setActiveIndex] = useState();
   return (
-    <View style={{ margin: 20 }}>
-      <Text></Text>
+    <View style={{}}>
+      <SectionHeading heading="Category" />
       <FlatList
         data={categories}
         horizontal={true}
@@ -35,7 +36,7 @@ const CategoryList = ({ categories }) => {
                 width: 40,
                 height: 40,
                 borderRadius: 99,
-                objectFit: "contained",
+                objectFit: "contain",
               }}
             />
             <Text style={{ texAlign: "center", marginTop: 4 }}>
