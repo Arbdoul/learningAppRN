@@ -1,11 +1,14 @@
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../Utils/Colors";
 
 const CourseItem = ({ course }) => {
+  const navigation = useNavigation();
   return (
-    <View
+    <TouchableOpacity
+      onPress={() => navigation.navigate("course-detail")}
       style={{
         backgroundColor: Colors.WHITE,
         width: 260,
@@ -71,7 +74,7 @@ const CourseItem = ({ course }) => {
           </Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
