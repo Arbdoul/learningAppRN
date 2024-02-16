@@ -70,7 +70,12 @@ const CourseIntro = ({ course }) => {
         </View>
 
         <SectionHeading heading={"Description"} />
-        <Text numberOfLines={3}>{course?.description}</Text>
+        <Text
+          style={{ marginTop: -10, fontFamily: "outfit" }}
+          numberOfLines={3}
+        >
+          {course?.description}
+        </Text>
       </View>
     </View>
   );
