@@ -39,10 +39,15 @@ const HomeScreen = () => {
       setCourseList(response?.courseLists);
     });
   };
-
+  //.filter((item) => item?.tag?.includes(tag));
   const getFilterCouserList = (tag) => {
-    // const result = courseList.filter((item) => item.tag.includes(tag));
-    // return result;
+    const result = courseList?.filter((item) => item?.tags?.includes(tag));
+    return result;
+  };
+
+  const getNextjsCouserList = (tag) => {
+    const result = courseList?.filter((item) => item?.tags?.includes(tag));
+    return result;
   };
   return (
     <ScrollView>
@@ -55,6 +60,13 @@ const HomeScreen = () => {
       {/* React course */}
       <SectionHeading heading="React Courses" />
       <CourseList courseList={getFilterCouserList("react")} />
+
+      {/* React course */}
+      <SectionHeading heading="Nextjs Courses" />
+      <CourseList courseList={getNextjsCouserList("nextjs")} />
+      {/* React course */}
+      <SectionHeading heading="React native Courses" />
+      <CourseList courseList={getNextjsCouserList("reactnative")} />
     </ScrollView>
   );
 };
