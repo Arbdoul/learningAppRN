@@ -1,9 +1,16 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import CourseIntro from "../components/CourseIntro";
 import EnrollmentSection from "../components/EnrollmentSection";
+import LessonSection from "../components/LessonSection";
 import SourceSection from "../components/SourceSection";
 
 const CourseDetailScreen = () => {
@@ -16,7 +23,7 @@ const CourseDetailScreen = () => {
     setCourse(params.course);
   });
   return (
-    <View style={{ padding: 20, marginTop: 25 }}>
+    <ScrollView style={{ padding: 20, marginTop: 25 }}>
       <View
         style={{
           display: "flex",
@@ -39,7 +46,10 @@ const CourseDetailScreen = () => {
 
       {/* Enrollment section */}
       <EnrollmentSection />
-    </View>
+
+      {/* lession section */}
+      <LessonSection course={course} />
+    </ScrollView>
   );
 };
 
