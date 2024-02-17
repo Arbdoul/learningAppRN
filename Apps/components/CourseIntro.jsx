@@ -7,7 +7,9 @@ import SectionHeading from "./SectionHeading";
 
 const CourseIntro = ({ course }) => {
   return (
-    <View>
+    <View
+      style={{ backgroundColor: Colors.WHITE, padding: 15, borderRadius: 10 }}
+    >
       <Video
         style={styles.video}
         source={{

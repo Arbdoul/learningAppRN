@@ -17,13 +17,14 @@ const SourceSection = () => {
         style={{
           padding: 15,
           backgroundColor: Colors.WHITE,
-          alignItems: center,
+          alignItems: "center",
           borderRadius: 10,
           width: 120,
+          borderWidth: 0.3,
         }}
       >
         <Image
-          source={{ uri: require("../../assets/code.jpg") }}
+          source={require("../../assets/code.png")}
           style={{ width: 40, height: 40 }}
         />
         <Text style={{ fontSize: 14, fontFamily: "outfit" }}>Source code</Text>
@@ -33,13 +34,14 @@ const SourceSection = () => {
         style={{
           padding: 15,
           backgroundColor: Colors.WHITE,
-          alignItems: center,
+          alignItems: "center",
           borderRadius: 10,
           width: 120,
+          borderWidth: 0.3,
         }}
       >
         <Image
-          source={{ uri: require("../../assets/demo.jpg") }}
+          source={require("../../assets/demo.jpg")}
           style={{ width: 40, height: 40 }}
         />
         <Text style={{ fontSize: 14, fontFamily: "outfit" }}>Demo</Text>
@@ -49,13 +51,14 @@ const SourceSection = () => {
         style={{
           padding: 15,
           backgroundColor: Colors.WHITE,
-          alignItems: center,
+          alignItems: "center",
           borderRadius: 10,
           width: 120,
+          borderWidth: 0.3,
         }}
       >
         <Image
-          source={{ uri: require("../../assets/youtube.jpg") }}
+          source={require("../../assets/youtube.png")}
           style={{ width: 40, height: 40 }}
         />
         <Text style={{ fontSize: 14, fontFamily: "outfit" }}>Youtube</Text>

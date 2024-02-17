@@ -3,6 +3,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import CourseIntro from "../components/CourseIntro";
+import EnrollmentSection from "../components/EnrollmentSection";
 import SourceSection from "../components/SourceSection";
 
 const CourseDetailScreen = () => {
@@ -35,6 +36,9 @@ const CourseDetailScreen = () => {
       <CourseIntro course={course} />
       {/* Source section */}
       <SourceSection />
+
+      {/* Enrollment section */}
+      <EnrollmentSection />
     </View>
   );
 };
