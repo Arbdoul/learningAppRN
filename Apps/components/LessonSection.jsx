@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import React from "react";
+import React, { useState } from "react";
 import {
   FlatList,
   StyleSheet,
@@ -11,6 +11,7 @@ import Colors from "../Utils/Colors";
 import SectionHeading from "./SectionHeading";
 
 const LessonSection = ({ course }) => {
+  const [isEnrolled, setIsEnrolled] = useState();
   return (
     <View style={{ marginBottom: 20 }}>
       <SectionHeading heading={"Lessons"} />
@@ -64,10 +65,15 @@ const LessonSection = ({ course }) => {
                 {item?.name}
               </Text>
             </View>
-            <Ionicons name="play-circle" size={34} color={Colors.PRIMARY} />
+            {isEnrolled || index === 0 ? (
+              <Ionicons name="play-circle" size={34} color={Colors.PRIMARY} />
+            ) : (
+              <Ionicons name="lock-closed" size={28} color={Colors.GRAY} />
+            )}
           </TouchableOpacity>
         )}
       />
+      <View style={{ height: 50 }}></View>
     </View>
   );
 };

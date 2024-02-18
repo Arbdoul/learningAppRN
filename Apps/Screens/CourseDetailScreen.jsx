@@ -22,6 +22,8 @@ const CourseDetailScreen = () => {
   useEffect(() => {
     setCourse(params.course);
   });
+
+  const checkIsUserEnrolledToCourse = () => {};
   return (
     <ScrollView style={{ padding: 20, marginTop: 25 }}>
       <View
