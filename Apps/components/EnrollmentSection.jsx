@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Colors from "../Utils/Colors";
 
-const EnrollmentSection = () => {
-  const [isEnrolled, setIsEnrolled] = useState(false);
+const EnrollmentSection = ({ userEnrollment }) => {
+  // const [isEnrolled, setIsEnrolled] = useState(false);
+
+  useEffect(() => {
+    // console.log(userEnrollment);
+  }, []);
+
   return (
     <View
       style={{
@@ -13,7 +18,7 @@ const EnrollmentSection = () => {
         marginTop: 20,
       }}
     >
-      {isEnrolled ? (
+      {userEnrollment?.length > 0 ? (
         <Text
           style={{
             textAlign: "center",

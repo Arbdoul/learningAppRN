@@ -18,15 +18,15 @@ import SourceSection from "../components/SourceSection";
 const CourseDetailScreen = () => {
   const { params } = useRoute();
   const [course, setCourse] = useState();
+  const [userEnrollment, setUserEnrollment] = useState();
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
-  const navigation = useNavigation();
 
-  //console.log("--the userdetails: ", userDetail);
+  const navigation = useNavigation();
 
   useEffect(() => {
     setCourse(params.course);
     params && userDetail && checkIsUserEnrolledToCourse();
-  }, [params]);
+  }, [params && userDetail]);
 
   const checkIsUserEnrolledToCourse = () => {
     //email slug
@@ -35,9 +35,11 @@ const CourseDetailScreen = () => {
         params.course?.slug,
         userDetail.email
       ).then((res) => {
-        console.log("--the resonse: ", res);
+        // console.log("the response", res?.userEnrollCourses);
+        setUserEnrollment(res?.userEnrollCourses);
       });
   };
+
   return (
     <ScrollView style={{ padding: 20, marginTop: 25 }}>
       <View
@@ -58,10 +60,10 @@ const CourseDetailScreen = () => {
 
       <CourseIntro course={course} />
       {/* Source section */}
-      <SourceSection />
+      <SourceSection course={course} userEnrollment={userEnrollment} />
 
       {/* Enrollment section */}
-      <EnrollmentSection />
+      <EnrollmentSection userEnrollment={userEnrollment} />
 
       {/* lession section */}
       <LessonSection course={course} />

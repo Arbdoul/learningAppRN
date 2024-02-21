@@ -1,8 +1,27 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  Linking,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Colors from "../Utils/Colors";
 
-const SourceSection = () => {
+const SourceSection = ({ course, userEnrollment }) => {
+  const onSourceClick = (url) => {
+    Linking.openURL(url);
+  };
+
+  const onDemoClick = (url) => {
+    Linking.openURL(url);
+  };
+
+  const onYoutubeClick = (url) => {
+    Linking.openURL(url);
+  };
+
   return (
     <View
       style={{
@@ -13,7 +32,8 @@ const SourceSection = () => {
         gap: 10,
       }}
     >
-      <View
+      <TouchableOpacity
+        onPress={() => onSourceClick(course.sourceCode)}
         style={{
           padding: 15,
           backgroundColor: Colors.WHITE,
@@ -28,9 +48,10 @@ const SourceSection = () => {
           style={{ width: 40, height: 40 }}
         />
         <Text style={{ fontSize: 14, fontFamily: "outfit" }}>Source code</Text>
-      </View>
+      </TouchableOpacity>
 
-      <View
+      <TouchableOpacity
+        onPress={() => onDemoClick(course.demoUrl)}
         style={{
           padding: 15,
           backgroundColor: Colors.WHITE,
@@ -45,9 +66,10 @@ const SourceSection = () => {
           style={{ width: 40, height: 40 }}
         />
         <Text style={{ fontSize: 14, fontFamily: "outfit" }}>Demo</Text>
-      </View>
+      </TouchableOpacity>
 
-      <View
+      <TouchableOpacity
+        onPress={() => onYoutubeClick(course.youtubeUrl)}
         style={{
           padding: 15,
           backgroundColor: Colors.WHITE,
@@ -62,7 +84,7 @@ const SourceSection = () => {
           style={{ width: 40, height: 40 }}
         />
         <Text style={{ fontSize: 14, fontFamily: "outfit" }}>Youtube</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
