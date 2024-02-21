@@ -79,6 +79,8 @@ const checkUserCourseEnrollment = async (slug, email) => {
       }
     }
   `;
+  const result = await request(MASTER_URL, query);
+  return result;
 };
 
 export default {

@@ -48,7 +48,7 @@ const LessonSection = ({ course }) => {
                   borderRadius: 15,
                   width: 40,
                   height: 40,
-                  textAlign: "center;",
+                  textAlign: "center",
                   color: Colors.PRIMARY,
                 }}
               >

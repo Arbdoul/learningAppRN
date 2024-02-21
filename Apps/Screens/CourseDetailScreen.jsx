@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { UserDetailContext } from "../../App";
+import GlobalApi from "../Utils/GlobalApi";
 import CourseIntro from "../components/CourseIntro";
 import EnrollmentSection from "../components/EnrollmentSection";
 import LessonSection from "../components/LessonSection";
@@ -16,14 +18,26 @@ import SourceSection from "../components/SourceSection";
 const CourseDetailScreen = () => {
   const { params } = useRoute();
   const [course, setCourse] = useState();
-
+  const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const navigation = useNavigation();
+
+  //console.log("--the userdetails: ", userDetail);
 
   useEffect(() => {
     setCourse(params.course);
-  });
+    params && userDetail && checkIsUserEnrolledToCourse();
+  }, [params]);
 
-  const checkIsUserEnrolledToCourse = () => {};
+  const checkIsUserEnrolledToCourse = () => {
+    //email slug
+    course &&
+      GlobalApi.checkUserCourseEnrollment(
+        params.course?.slug,
+        userDetail.email
+      ).then((res) => {
+        console.log("--the resonse: ", res);
+      });
+  };
   return (
     <ScrollView style={{ padding: 20, marginTop: 25 }}>
       <View

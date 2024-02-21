@@ -7,8 +7,10 @@ import LoginScreen from "./Apps/Screens/LoginScreen";
 import { client } from "./Apps/Utils/KindConfig";
 
 export const AuthContext = createContext();
+export const UserDetailContext = createContext();
 export default function App() {
   const [auth, setAuth] = useState(false);
+  const [userDetail, setUserDetail] = useState();
   useEffect(() => {
     checkAuthenticate();
   }, [auth]);
@@ -25,6 +27,7 @@ export default function App() {
     if (await client.isAuthenticated) {
       // Need to implement, e.g: call an api, etc...
       const userProfile = await client.getUserDetails();
+      setUserDetail(userProfile);
       setAuth(true);
     } else {
       // Need to implement, e.g: redirect user to sign in, etc..
@@ -35,9 +38,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <AuthContext.Provider value={{ auth, setAuth }}>
-        <NavigationContainer>
-          {auth ? <HomeNavigation /> : <LoginScreen />}
-        </NavigationContainer>
+        <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
+          <NavigationContainer>
+            {auth ? <HomeNavigation /> : <LoginScreen />}
+          </NavigationContainer>
+        </UserDetailContext.Provider>
       </AuthContext.Provider>
     </View>
   );
