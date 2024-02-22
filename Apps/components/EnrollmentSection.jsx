@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../Utils/Colors";
 
-const EnrollmentSection = ({ userEnrollment }) => {
+const EnrollmentSection = ({ userEnrollment, onEnrollmentPress }) => {
   // const [isEnrolled, setIsEnrolled] = useState(false);
 
   useEffect(() => {
@@ -19,27 +19,31 @@ const EnrollmentSection = ({ userEnrollment }) => {
       }}
     >
       {userEnrollment?.length > 0 ? (
-        <Text
-          style={{
-            textAlign: "center",
-            fontFamily: "outfit-medium",
-            fontSize: 20,
-            color: Colors.WHITE,
-          }}
-        >
-          Continue
-        </Text>
+        <TouchableOpacity onPress={() => console.log("continue")}>
+          <Text
+            style={{
+              textAlign: "center",
+              fontFamily: "outfit-medium",
+              fontSize: 20,
+              color: Colors.WHITE,
+            }}
+          >
+            Continue
+          </Text>
+        </TouchableOpacity>
       ) : (
-        <Text
-          style={{
-            textAlign: "center",
-            fontFamily: "outfit-medium",
-            fontSize: 20,
-            color: Colors.WHITE,
-          }}
-        >
-          Enroll to Course
-        </Text>
+        <TouchableOpacity onPress={() => onEnrollmentPress()}>
+          <Text
+            style={{
+              textAlign: "center",
+              fontFamily: "outfit-medium",
+              fontSize: 20,
+              color: Colors.WHITE,
+            }}
+          >
+            Enroll to Course
+          </Text>
+        </TouchableOpacity>
       )}
     </View>
   );

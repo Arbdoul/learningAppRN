@@ -83,8 +83,31 @@ const checkUserCourseEnrollment = async (slug, email) => {
   return result;
 };
 
+const saveUserCourseEnrollment = async (id, email) => {
+  const query =
+    `
+  mutation MyMutation {
+    createUserEnrollCourse(
+      data: {courseId: "` +
+    id +
+    `", courseList: {connect: {id: "` +
+    id +
+    `"}}, userEmail: "` +
+    email +
+    `"}
+    ) {
+      id
+    }
+  }
+  
+  `;
+  const result = await request(MASTER_URL, query);
+  return result;
+};
+
 export default {
   getCategories,
   getCourseList,
   checkUserCourseEnrollment,
+  saveUserCourseEnrollment,
 };

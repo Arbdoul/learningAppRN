@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
   Linking,
@@ -10,8 +10,9 @@ import {
 import Colors from "../Utils/Colors";
 
 const SourceSection = ({ course, userEnrollment }) => {
+  const [isMember, setIsMember] = useState(false);
   const onSourceClick = (url) => {
-    Linking.openURL(url);
+    if (isMember) Linking.openURL(url);
   };
 
   const onDemoClick = (url) => {

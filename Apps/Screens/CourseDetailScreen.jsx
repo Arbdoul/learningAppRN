@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
 import {
+  Alert,
   ScrollView,
   StyleSheet,
   Text,
@@ -40,6 +41,28 @@ const CourseDetailScreen = () => {
       });
   };
 
+  const onEnrollmentPress = () => {
+    if (course?.free) {
+      GlobalApi.saveUserCourseEnrollment(course.id, userDetail.email).then(
+        (resp) => {
+          console.log(resp);
+          if (resp) {
+            Alert.alert("Great", "You just enroll to new course.", [
+              {
+                text: "ok",
+                onPress: () => console.log("Ok Press"),
+                style: "cancel",
+              },
+            ]);
+          }
+        }
+      );
+    } else {
+      //check is memeber
+      console.log("Need membership");
+    }
+  };
+
   return (
     <ScrollView style={{ padding: 20, marginTop: 25 }}>
       <View
@@ -63,7 +86,10 @@ const CourseDetailScreen = () => {
       <SourceSection course={course} userEnrollment={userEnrollment} />
 
       {/* Enrollment section */}
-      <EnrollmentSection userEnrollment={userEnrollment} />
+      <EnrollmentSection
+        userEnrollment={userEnrollment}
+        onEnrollmentPress={() => onEnrollmentPress()}
+      />
 
       {/* lession section */}
       <LessonSection course={course} />
