@@ -33,10 +33,9 @@ const CourseDetailScreen = () => {
     //email slug
     course &&
       GlobalApi.checkUserCourseEnrollment(
-        params.course?.slug,
+        params.course?.id,
         userDetail.email
       ).then((res) => {
-        // console.log("the response", res?.userEnrollCourses);
         setUserEnrollment(res?.userEnrollCourses);
       });
   };
@@ -54,6 +53,7 @@ const CourseDetailScreen = () => {
                 style: "cancel",
               },
             ]);
+            checkIsUserEnrolledToCourse();
           }
         }
       );

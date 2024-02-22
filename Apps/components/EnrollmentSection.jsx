@@ -19,7 +19,7 @@ const EnrollmentSection = ({ userEnrollment, onEnrollmentPress }) => {
       }}
     >
       {userEnrollment?.length > 0 ? (
-        <TouchableOpacity onPress={() => console.log("continue")}>
+        <TouchableOpacity onPress={console.log("continue")}>
           <Text
             style={{
               textAlign: "center",

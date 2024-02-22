@@ -98,6 +98,9 @@ const saveUserCourseEnrollment = async (id, email) => {
     ) {
       id
     }
+    publishManyUserEnrollCourses {
+      count
+    }
   }
   
   `;
