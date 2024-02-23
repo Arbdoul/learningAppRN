@@ -4,13 +4,17 @@ import { createContext, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import HomeNavigation from "./Apps/Navigation/HomeNavigation";
 import LoginScreen from "./Apps/Screens/LoginScreen";
+import GlobalApi from "./Apps/Utils/GlobalApi";
 import { client } from "./Apps/Utils/KindConfig";
 
 export const AuthContext = createContext();
 export const UserDetailContext = createContext();
+export const MembershipContext = createContext();
+
 export default function App() {
   const [auth, setAuth] = useState(false);
   const [userDetail, setUserDetail] = useState();
+  const [isMember, setIsMember] = useState();
   useEffect(() => {
     checkAuthenticate();
   }, [auth]);
@@ -29,19 +33,29 @@ export default function App() {
       const userProfile = await client.getUserDetails();
       setUserDetail(userProfile);
       setAuth(true);
+      checkUserMembership();
     } else {
       // Need to implement, e.g: redirect user to sign in, etc..
       setAuth(false);
     }
   };
 
+  //check Membership
+  const checkUserMembership = () => {
+    GlobalApi.checkUserMembership(userDetail.email).then((resp) => {
+      console.log(resp);
+      setIsMember(resp.memberships?.length > 0);
+    });
+  };
   return (
     <View style={styles.container}>
       <AuthContext.Provider value={{ auth, setAuth }}>
         <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
-          <NavigationContainer>
-            {auth ? <HomeNavigation /> : <LoginScreen />}
-          </NavigationContainer>
+          <MembershipContext.Provider value={{ isMember, setIsMember }}>
+            <NavigationContainer>
+              {auth ? <HomeNavigation /> : <LoginScreen />}
+            </NavigationContainer>
+          </MembershipContext.Provider>
         </UserDetailContext.Provider>
       </AuthContext.Provider>
     </View>

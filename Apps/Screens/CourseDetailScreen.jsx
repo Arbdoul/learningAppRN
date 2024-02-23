@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { UserDetailContext } from "../../App";
+import { MembershipContext, UserDetailContext } from "../../App";
 import GlobalApi from "../Utils/GlobalApi";
 import CourseIntro from "../components/CourseIntro";
 import EnrollmentSection from "../components/EnrollmentSection";
@@ -21,6 +21,7 @@ const CourseDetailScreen = () => {
   const [course, setCourse] = useState();
   const [userEnrollment, setUserEnrollment] = useState();
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
+  const { isMember, setIsMember } = useContext(MembershipContext);
 
   const navigation = useNavigation();
 
@@ -58,8 +59,10 @@ const CourseDetailScreen = () => {
         }
       );
     } else {
-      //check is memeber
-      console.log("Need membership");
+      if (!isMember) {
+        navigation.navigate("membershipModal");
+        return;
+      }
     }
   };
 
