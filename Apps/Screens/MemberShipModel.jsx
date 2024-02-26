@@ -1,8 +1,31 @@
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Colors from "../Utils/Colors";
+import GlobalApi from "../Utils/GlobalApi";
 
 const MemberShipModal = () => {
+  const saveNewMembership = () => {
+    GlobalApi.createNewMembership().then((resp) => {
+      console.log(resp);
+
+      if (resp) {
+        Alert.alert("Great!!!", "thank you for joining membership.", [
+          {
+            text: "ok",
+            onPress: () => console.log("Ok Press"),
+            style: "cancel",
+          },
+        ]);
+      }
+    });
+  };
   return (
     <View>
       <Image
@@ -75,7 +98,7 @@ const MemberShipModal = () => {
         </TouchableOpacity>
       </View>
       <TouchableOpacity
-        onPress={() => saveNewMembership}
+        onPress={() => saveNewMembership()}
         style={{
           padding: 20,
           margin: 20,
