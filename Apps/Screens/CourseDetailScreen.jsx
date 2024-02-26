@@ -43,27 +43,32 @@ const CourseDetailScreen = () => {
 
   const onEnrollmentPress = () => {
     if (course?.free) {
-      GlobalApi.saveUserCourseEnrollment(course.id, userDetail.email).then(
-        (resp) => {
-          console.log(resp);
-          if (resp) {
-            Alert.alert("Great", "You just enroll to new course.", [
-              {
-                text: "ok",
-                onPress: () => console.log("Ok Press"),
-                style: "cancel",
-              },
-            ]);
-            checkIsUserEnrolledToCourse();
-          }
-        }
-      );
+      saveUserEnrollment();
     } else {
       if (!isMember) {
         navigation.navigate("membershipModal");
         return;
       }
+      saveUserEnrollment();
     }
+  };
+
+  const saveUserEnrollment = () => {
+    GlobalApi.saveUserCourseEnrollment(course.id, userDetail.email).then(
+      (resp) => {
+        console.log(resp);
+        if (resp) {
+          Alert.alert("Great", "You just enroll to new course.", [
+            {
+              text: "ok",
+              onPress: () => console.log("Ok Press"),
+              style: "cancel",
+            },
+          ]);
+          checkIsUserEnrolledToCourse();
+        }
+      }
+    );
   };
 
   return (

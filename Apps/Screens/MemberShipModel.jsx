@@ -19,7 +19,12 @@ const MemberShipModal = () => {
         }}
       >
         <TouchableOpacity
-          style={{ borderRadius: 15, borderWidth: 1, width: 100 }}
+          style={{
+            borderRadius: 15,
+            borderColor: Colors.GRAY,
+            borderWidth: 1,
+            width: 100,
+          }}
         >
           <View
             style={{
@@ -29,13 +34,25 @@ const MemberShipModal = () => {
             }}
           >
             <Text>1 Month</Text>
-            <View style={{ borderWidth: 0.2, width: "100%", margin: 10 }} />
+            <View
+              style={{
+                borderWidth: 0.2,
+                borderColor: Colors.GRAY,
+                width: "100%",
+                margin: 10,
+              }}
+            />
             <Text style={{ fontWeight: "bold" }}>$4.99</Text>
           </View>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={{ borderRadius: 15, borderWidth: 1, width: 100 }}
+          style={{
+            borderRadius: 15,
+            borderWidth: 1,
+            borderColor: Colors.GRAY,
+            width: 100,
+          }}
         >
           <View
             style={{
@@ -45,16 +62,25 @@ const MemberShipModal = () => {
             }}
           >
             <Text>1 year</Text>
-            <View style={{ borderWidth: 0.2, width: "100%", margin: 10 }} />
+            <View
+              style={{
+                borderWidth: 0.2,
+                borderColor: Colors.GRAY,
+                width: "100%",
+                margin: 10,
+              }}
+            />
             <Text style={{ fontWeight: "bold" }}>$4.99</Text>
           </View>
         </TouchableOpacity>
       </View>
       <TouchableOpacity
+        onPress={() => saveNewMembership}
         style={{
           padding: 20,
           margin: 20,
           borderRadius: 16,
+          borderColor: Colors.GRAY,
           backgroundColor: Colors.PRIMARY,
         }}
       >
@@ -68,12 +94,18 @@ const MemberShipModal = () => {
           Get Membership Now
         </Text>
       </TouchableOpacity>
-      <View style={{ margin: 20 }}>
+      <View style={{ marginHorizontal: 20 }}>
         <Text style={{ color: Colors.GRAY }}>
           You can purchase the membership to access all the course along with
           the source code and extra
         </Text>
-        <Text style={{ color: Colors.GRAY, paddingTop: 10 }}>
+        <Text
+          style={{
+            color: Colors.GRAY,
+            paddingTop: 10,
+            fontFamily: "outfit",
+          }}
+        >
           If you want to cancel membership, then email us on: arbdool1@gmail.ocm
         </Text>
       </View>
