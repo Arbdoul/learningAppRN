@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {
   Alert,
   Image,
@@ -7,12 +7,16 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { UserDetailContext } from "../../App";
 import Colors from "../Utils/Colors";
 import GlobalApi from "../Utils/GlobalApi";
 
 const MemberShipModal = () => {
+  const [selectedMembership, setSelectedMembership] = useState();
+  const { userDetail, setUserDetail } = useContext(UserDetailContext);
+
   const saveNewMembership = () => {
-    GlobalApi.createNewMembership().then((resp) => {
+    GlobalApi.createNewMembership(userDetail.email).then((resp) => {
       console.log(resp);
 
       if (resp) {
@@ -98,7 +102,7 @@ const MemberShipModal = () => {
         </TouchableOpacity>
       </View>
       <TouchableOpacity
-        onPress={() => saveNewMembership()}
+        onPress={() => selectedMembership && saveNewMembership()}
         style={{
           padding: 20,
           margin: 20,
