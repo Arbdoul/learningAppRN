@@ -27,18 +27,17 @@ const CourseDetailScreen = () => {
 
   useEffect(() => {
     setCourse(params.course);
-    params && userDetail && checkIsUserEnrolledToCourse();
+    params && userDetail && checkIsUserEnrolledToCourse(params.course);
   }, [params && userDetail]);
 
-  const checkIsUserEnrolledToCourse = () => {
+  const checkIsUserEnrolledToCourse = (course) => {
     //email slug
     course &&
-      GlobalApi.checkUserCourseEnrollment(
-        params.course?.id,
-        userDetail.email
-      ).then((res) => {
-        setUserEnrollment(res?.userEnrollCourses);
-      });
+      GlobalApi.checkUserCourseEnrollment(course?.id, userDetail.email).then(
+        (res) => {
+          setUserEnrollment(res?.userEnrollCourses);
+        }
+      );
   };
 
   const onEnrollmentPress = () => {
