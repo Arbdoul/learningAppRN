@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
   Image,
@@ -11,8 +12,14 @@ import Colors from "../Utils/Colors";
 
 const SourceSection = ({ course, userEnrollment }) => {
   const [isMember, setIsMember] = useState(false);
+
+  const navigation = useNavigation();
   const onSourceClick = (url) => {
-    if (isMember) Linking.openURL(url);
+    if (isMember) {
+      Linking.openURL(url);
+    } else {
+      navigation.navigate("membershipModal");
+    }
   };
 
   const onDemoClick = (url) => {

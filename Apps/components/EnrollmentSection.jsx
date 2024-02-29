@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../Utils/Colors";
 
-const EnrollmentSection = ({ userEnrollment, onEnrollmentPress }) => {
+const EnrollmentSection = ({
+  userEnrollment,
+  onEnrollmentPress,
+  onContinuePress,
+}) => {
   // const [isEnrolled, setIsEnrolled] = useState(false);
 
   useEffect(() => {
@@ -19,7 +23,7 @@ const EnrollmentSection = ({ userEnrollment, onEnrollmentPress }) => {
       }}
     >
       {userEnrollment?.length > 0 ? (
-        <TouchableOpacity onPress={console.log("continue")}>
+        <TouchableOpacity onPress={() => onContinuePress()}>
           <Text
             style={{
               textAlign: "center",

@@ -96,6 +96,12 @@ const CourseDetailScreen = () => {
       <EnrollmentSection
         userEnrollment={userEnrollment}
         onEnrollmentPress={() => onEnrollmentPress()}
+        onContinuePress={() =>
+          navigation.navigate("watchLesson", {
+            course: course,
+            userEnrollment: userEnrollment,
+          })
+        }
       />
 
       {/* lession section */}

@@ -3,6 +3,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import CourseDetailScreen from "../Screens/CourseDetailScreen";
 import MemberShipModal from "../Screens/MemberShipModel";
+import WatchLessons from "../Screens/WatchLessons";
 import TabNavigation from "./TabNavigation";
 
 const Stack = createStackNavigator();
@@ -18,6 +19,7 @@ const HomeNavigation = () => {
           presentation: "modal",
         }}
       />
+      <Stack.Screen name="watchLesson" component={WatchLessons} />
     </Stack.Navigator>
   );
 };
